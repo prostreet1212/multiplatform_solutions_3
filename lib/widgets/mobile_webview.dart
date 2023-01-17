@@ -1,24 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-
-Widget webView()=>MobileWebView();
+Widget webView(String link) => MobileWebView(link: link);
 
 class MobileWebView extends StatefulWidget {
-   MobileWebView({Key? key}) : super(key: key);
+  MobileWebView({Key? key, required this.link}) : super(key: key);
+  String link;
+
+  var state;
+  void loadUrl(){
+    if(state!=null){
+      _MobileWebViewState().loadUrl();
+    }else{
+
+    }
+
+  }
 
   @override
-  State<MobileWebView> createState() => _MobileWebViewState();
+  State<MobileWebView> createState() {
+    state = _MobileWebViewState();
+    return state;
+  }
+
+
 }
 
 class _MobileWebViewState extends State<MobileWebView> {
   bool isLoading = false;
   late WebViewController controller;
 
+  void loadUrl(){
+    controller.loadRequest(Uri.parse('http://kdrc.ru'));
+  }
+
   @override
   void initState() {
     super.initState();
-     controller=WebViewController()
+    controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
@@ -43,7 +62,7 @@ class _MobileWebViewState extends State<MobileWebView> {
           },
         ),
       );
-     controller.loadRequest(Uri.parse('http://kdrc.ru'));
+
   }
 
   @override
@@ -55,11 +74,11 @@ class _MobileWebViewState extends State<MobileWebView> {
         ),
         isLoading
             ? Container(
-          color: Colors.white,
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        )
+                color: Colors.white,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
             : Container(),
       ],
     );

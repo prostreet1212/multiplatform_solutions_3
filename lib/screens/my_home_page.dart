@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:html/parser.dart' show parse;
 import 'package:dio/dio.dart';
 import '../app_platform.dart';
-import '../widgets/multiplatform_webview.dart'
+import '../widgets/mobile_webview.dart';
+/*import '../widgets/multiplatform_webview.dart'
 if(dart.library.io) '../widgets/mobile_webview.dart'
-if(dart.library.html) '../widgets/web_platform_webview.dart';
+if(dart.library.html) '../widgets/web_platform_webview.dart';*/
 
 
 
@@ -29,14 +30,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    var m=MobileWebView(link: textController.text);
     return SafeArea(
         child: Scaffold(
       body: Column(
         children: [
           Expanded(
               flex: 12,
-              child: webView(),
+              child: m,
               //child: WebPlatformWebView()
           ),
           //Divider(thickness: 2,color: Colors.black45,),
@@ -72,15 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: const Text('LOAD'),
                       onPressed: () {
                         setState(() {
-                          //m.controller.loadRequest(Uri.parse(textController.text));
-                        });
-                        /*setState(() {
-                          isLoading = true;
-                          htmlText = getHtmlCode(textController.text);
+                          m.loadUrl();
+                          //textController.text='http://kdrc.ru';
+                          //isLoading = true;
+                          /*htmlText = getHtmlCode(textController.text);
                           controller
-                              .loadRequest(Uri.parse(textController.text));
+                              .loadRequest(Uri.parse(textController.text));*/
                           //htmlText = getHtmlCode('https://flutter.dev');
-                        });*/
+                        });
                       },
                     ),
                   )

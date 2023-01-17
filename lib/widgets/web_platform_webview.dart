@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import 'dart:html';
 import 'dart:ui' as ui;
 
-Widget webView()=>WebPlatformWebView();
+Widget webView(String link) => WebPlatformWebView(link: link);
 
 class WebPlatformWebView extends StatelessWidget {
-  const WebPlatformWebView({Key? key}) : super(key: key);
+
+  WebPlatformWebView({Key? key, required this.link}) : super(key: key);
+  String link;
+
 
   @override
   Widget build(BuildContext context) {
-    String id=Random().nextInt.toString();
+    final id = Random().nextInt(1000).toString();
     // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(id,(int viewId)=>IFrameElement()..src='http://kdrc.ru');
+    ui.platformViewRegistry.registerViewFactory(
+        id, (int viewId) => IFrameElement()..src = link);
     return HtmlElementView(viewType: id);
   }
 }
