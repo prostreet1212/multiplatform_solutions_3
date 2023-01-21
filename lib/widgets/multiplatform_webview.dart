@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-Widget webView (String link)=>Container();
+Widget webView ()=>Container();

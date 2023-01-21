@@ -1,42 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:multiplatform_solutions_3/widgets/find_panel.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../app_platform.dart';
 
-Widget webView(String link) => MobileWebView(link: link);
+Widget webView() => const MobileWebView();
 
 class MobileWebView extends StatefulWidget {
-  MobileWebView({Key? key, required this.link}) : super(key: key);
-  String link;
-
-  var state;
-  void loadUrl(){
-    if(state!=null){
-      _MobileWebViewState().loadUrl();
-    }else{
-
-    }
-
-  }
+  const MobileWebView({Key? key}) : super(key: key);
 
   @override
   State<MobileWebView> createState() {
-    state = _MobileWebViewState();
-    return state;
+    return _MobileWebViewState();
   }
-
-
 }
 
 class _MobileWebViewState extends State<MobileWebView> {
   bool isLoading = false;
   late WebViewController controller;
 
-  void loadUrl(){
-    controller.loadRequest(Uri.parse('http://kdrc.ru'));
+
+  void loadUrl(String url) {
+    controller.loadRequest(Uri.parse(url));
   }
 
   @override
   void initState() {
     super.initState();
+
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
@@ -62,25 +52,47 @@ class _MobileWebViewState extends State<MobileWebView> {
           },
         ),
       );
-
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(
       children: [
-        WebViewWidget(
-          controller: controller,
+        Expanded(
+          flex: 12,
+          child: Stack(
+            children: [
+              WebViewWidget(
+                controller: controller,
+              ),
+              isLoading
+                  ? Container(
+                      color: Colors.white,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : Container(),
+            ],
+          ),
         ),
-        isLoading
-            ? Container(
-                color: Colors.white,
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : Container(),
+        Container(color: Colors.black45, height: 1),
+        FindPanel(load: loadUrl),
+        Text(
+          'APPLICATION RUNNING ON ${AppPlatform.platform.toUpperCase()}',
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 8,
+        )
+
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    //textController.dispose();
+    super.dispose();
   }
 }
