@@ -20,7 +20,9 @@ class _MobileWebViewState extends State<MobileWebView> {
 
 
   void loadUrl(String url) {
-    controller.loadRequest(Uri.parse(url));
+    setState(() {
+      controller.loadRequest(Uri.parse(url));
+    });
   }
 
   @override

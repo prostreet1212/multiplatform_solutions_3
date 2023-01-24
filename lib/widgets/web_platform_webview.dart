@@ -9,7 +9,7 @@ import '../app_platform.dart';
 import 'find_panel.dart';
 
 Widget webView() =>  WebPlatformWebView();
-
+/*
 class WebPlatformWebView extends StatelessWidget {
    WebPlatformWebView({Key? key}) : super(key: key);
 
@@ -27,9 +27,9 @@ class WebPlatformWebView extends StatelessWidget {
       children: [
         Expanded(
           flex: 12,
-          //child: HtmlElementView(viewType: id),
-          child: InAppWebView(
-            initialUrlRequest: URLRequest(url: Uri.parse('https://kdrc.ru')),),
+          child: HtmlElementView(viewType: id),
+          /*child: InAppWebView(
+            initialUrlRequest: URLRequest(url: Uri.parse('https://kdrc.ru')),),*/
         ),
         Container(color: Colors.black45, height: 1),
         FindPanel(load: loadUrl),
@@ -44,9 +44,9 @@ class WebPlatformWebView extends StatelessWidget {
     );
   }
 }
+*/
 
 
-/*
 class WebPlatformWebView extends StatefulWidget {
   const WebPlatformWebView({Key? key}) : super(key: key);
 
@@ -58,10 +58,13 @@ class WebPlatformWebView extends StatefulWidget {
 class _WebPlatformWebViewState extends State<WebPlatformWebView> {
   String id='';
   void loadUrl(String url) {
-     id = Random().nextInt(1000).toString();
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(
-        id, (int viewId) => IFrameElement()..src = url);
+    setState(() {
+      id = Random().nextInt(1000).toString();
+      // ignore: undefined_prefixed_name
+      ui.platformViewRegistry.registerViewFactory(
+          id, (int viewId) => IFrameElement()..src = url);
+    });
+
   }
 
 
@@ -87,4 +90,4 @@ class _WebPlatformWebViewState extends State<WebPlatformWebView> {
     );
   }
 }
-*/
+

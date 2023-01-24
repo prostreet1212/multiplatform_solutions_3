@@ -51,10 +51,10 @@ class _FindPanelState extends State<FindPanel> {
                 ),
                 child: const Text('LOAD'),
                 onPressed: () {
-                  setState(() {
+                 // setState(() {
                     widget.load(textController.text);
                     //loadUrl(textController.text);
-                  });
+                 // });
                 },
               ),
             )
