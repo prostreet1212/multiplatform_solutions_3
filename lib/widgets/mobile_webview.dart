@@ -18,7 +18,6 @@ class _MobileWebViewState extends State<MobileWebView> {
   bool isLoading = false;
   late WebViewController controller;
 
-
   void loadUrl(String url) {
     setState(() {
       controller.loadRequest(Uri.parse(url));
@@ -87,7 +86,6 @@ class _MobileWebViewState extends State<MobileWebView> {
         const SizedBox(
           height: 8,
         )
-
       ],
     );
   }

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../app_platform.dart';
-
 class FindPanel extends StatefulWidget {
-  FindPanel({Key? key, required this.load}) : super(key: key);
-  Function(String s) load;
+  const FindPanel({Key? key, required this.load}) : super(key: key);
+  final Function(String s) load;
 
   @override
   State<FindPanel> createState() => _FindPanelState();
@@ -16,7 +14,7 @@ class _FindPanelState extends State<FindPanel> {
   @override
   void initState() {
     super.initState();
-    textController.text = 'https://flutter.dev';
+    textController.text = 'http://kdrc.ru';
   }
 
   @override
@@ -51,10 +49,10 @@ class _FindPanelState extends State<FindPanel> {
                 ),
                 child: const Text('LOAD'),
                 onPressed: () {
-                 // setState(() {
-                    widget.load(textController.text);
-                    //loadUrl(textController.text);
-                 // });
+                  // setState(() {
+                  widget.load(textController.text);
+                  //loadUrl(textController.text);
+                  // });
                 },
               ),
             )

@@ -1,4 +1,3 @@
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import "package:universal_html/html.dart";
 
 //import 'dart:html';
@@ -8,7 +7,7 @@ import 'dart:ui' as ui;
 import '../app_platform.dart';
 import 'find_panel.dart';
 
-Widget webView() =>  WebPlatformWebView();
+Widget webView() => const WebPlatformWebView();
 /*
 class WebPlatformWebView extends StatelessWidget {
    WebPlatformWebView({Key? key}) : super(key: key);
@@ -46,7 +45,6 @@ class WebPlatformWebView extends StatelessWidget {
 }
 */
 
-
 class WebPlatformWebView extends StatefulWidget {
   const WebPlatformWebView({Key? key}) : super(key: key);
 
@@ -54,20 +52,17 @@ class WebPlatformWebView extends StatefulWidget {
   State<WebPlatformWebView> createState() => _WebPlatformWebViewState();
 }
 
-
 class _WebPlatformWebViewState extends State<WebPlatformWebView> {
-  String id='';
+  String id = '';
+
   void loadUrl(String url) {
     setState(() {
       id = Random().nextInt(1000).toString();
       // ignore: undefined_prefixed_name
-      ui.platformViewRegistry.registerViewFactory(
-          id, (int viewId) => IFrameElement()..src = url);
+      ui.platformViewRegistry
+          .registerViewFactory(id, (int viewId) => IFrameElement()..src = url);
     });
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -90,4 +85,3 @@ class _WebPlatformWebViewState extends State<WebPlatformWebView> {
     );
   }
 }
-
