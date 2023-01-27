@@ -18,6 +18,12 @@ class _FindPanelState extends State<FindPanel> {
   }
 
   @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
@@ -26,7 +32,6 @@ class _FindPanelState extends State<FindPanel> {
         child: Row(
           children: [
             Expanded(
-              //width: MediaQuery.of(context).size.width * 0.75,
               child: TextField(
                 controller: textController,
                 decoration: const InputDecoration(
@@ -43,7 +48,6 @@ class _FindPanelState extends State<FindPanel> {
               height: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  //minimumSize: Size(100, 100),
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero),
                 ),

@@ -68,11 +68,11 @@ class _MobileWebViewState extends State<MobileWebView> {
               ),
               isLoading
                   ? Container(
-                      color: Colors.white,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    )
+                color: Colors.white,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              )
                   : Container(),
             ],
           ),
@@ -88,11 +88,5 @@ class _MobileWebViewState extends State<MobileWebView> {
         )
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    //textController.dispose();
-    super.dispose();
   }
 }

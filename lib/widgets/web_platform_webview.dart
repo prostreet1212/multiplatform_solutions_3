@@ -5,10 +5,10 @@ import 'dart:ui' as ui;
 import '../app_platform.dart';
 import 'find_panel.dart';
 
-Widget webView() => const WebPlatformWebView();
+Widget webView() =>  const WebPlatformWebView();
 
 class WebPlatformWebView extends StatefulWidget {
-  const WebPlatformWebView({Key? key}) : super(key: key);
+   const WebPlatformWebView({Key? key}) : super(key: key);
 
   @override
   State<WebPlatformWebView> createState() => _WebPlatformWebViewState();
