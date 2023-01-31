@@ -25,42 +25,43 @@ class _FindPanelState extends State<FindPanel> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
+    return SizedBox(
       child: Padding(
         padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                controller: textController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.zero,
+        child: SizedBox(
+          height: 50,
+          child: Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  child: TextField(
+                    controller: textController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 12,
-            ),
-            SizedBox(
-              height: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero),
-                ),
-                child: const Text('LOAD'),
-                onPressed: () {
-                  // setState(() {
-                  widget.load(textController.text);
-                  //loadUrl(textController.text);
-                  // });
-                },
+              const SizedBox(
+                width: 12,
               ),
-            )
-          ],
+              SizedBox(
+                height: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero),
+                  ),
+                  child: const Text('LOAD'),
+                  onPressed: () {
+                    widget.load(textController.text);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

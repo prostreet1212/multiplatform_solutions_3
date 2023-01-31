@@ -60,7 +60,6 @@ class _MobileWebViewState extends State<MobileWebView> {
     return Column(
       children: [
         Expanded(
-          flex: 12,
           child: Stack(
             children: [
               WebViewWidget(
@@ -68,11 +67,11 @@ class _MobileWebViewState extends State<MobileWebView> {
               ),
               isLoading
                   ? Container(
-                color: Colors.white,
-                child: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-              )
+                      color: Colors.white,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
                   : Container(),
             ],
           ),
