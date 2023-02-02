@@ -48,18 +48,19 @@ class _FindPanelState extends State<FindPanel> {
                 width: 12,
               ),
               SizedBox(
-                height: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero),
-                  ),
-                  child: const Text('LOAD'),
-                  onPressed: () {
-                    widget.load(textController.text);
-                  },
-                ),
-              )
+                  height: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                    child: const Text('LOAD'),
+                    onPressed: () {
+                      widget.load(textController.text);
+                    },
+                  )),
+              //)
             ],
           ),
         ),

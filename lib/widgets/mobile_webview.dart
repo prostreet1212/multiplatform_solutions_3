@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:multiplatform_solutions_3/widgets/find_panel.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../app_platform.dart';
+import 'find_panel.dart';
 
 Widget webView() => const MobileWebView();
 
